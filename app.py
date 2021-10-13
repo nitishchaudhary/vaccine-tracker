@@ -2,9 +2,12 @@ from flask import Flask, render_template,request
 import requests
 import json
 import time
+from flask_googlemaps import GoogleMaps
+from flask_googlemaps import Map
 
 app = Flask(__name__)
-
+app.config['GOOGLEMAPS_KEY'] = "AIzaSyC-bTe5clcHztFI2Nix-85mISCEygiuEic"
+GoogleMaps(app)
 
 @app.route("/")
 def home():
@@ -21,12 +24,13 @@ def search():
         headers = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',}
         
         
-        x = requests.get(url = uri , headers = headers , params = para , stream = True)
-        data = x.json()
-        #if(not data['sessions']):
+        response = requests.get(url = uri , headers = headers , params = para , stream = True)
+        data = response.json()
+        print(data["sessions"][1])
         
-    return data 
-
+        #if(not data['sessions']):
+    # return data
+    return render_template("results.html" , data = data)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
