@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config['GOOGLEMAPS_KEY'] = os.getenv('KEY')
 GoogleMaps(app)
 key = os.getenv('KEY')
-print(key)
+
 
 @app.route("/")
 def home():
@@ -31,6 +31,7 @@ def search():
         
         response = requests.get(url = uri , headers = headers , params = para , stream = True)
         data = response.json()
+        print(type(data))
         # print(data["sessions"][1])
 
         
