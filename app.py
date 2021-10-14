@@ -1,13 +1,17 @@
 from flask import Flask, render_template,request
 import requests
 import json
+import os
 import time
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
+from dotenv import load_dotenv
 
+load_dotenv()
 app = Flask(__name__)
-app.config['GOOGLEMAPS_KEY'] = "AIzaSyC-bTe5clcHztFI2Nix-85mISCEygiuEic"
+app.config['GOOGLEMAPS_KEY'] = os.getenv('KEY')
 GoogleMaps(app)
+key = os.getenv('KEY')
 
 @app.route("/")
 def home():
@@ -26,11 +30,12 @@ def search():
         
         response = requests.get(url = uri , headers = headers , params = para , stream = True)
         data = response.json()
-        print(data["sessions"][1])
+        # print(data["sessions"][1])
+
         
         #if(not data['sessions']):
     # return data
-    return render_template("results.html" , data = data)
+    return render_template("results.html" , key = key , data = data)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
