@@ -12,6 +12,7 @@ app = Flask(__name__)
 app.config['GOOGLEMAPS_KEY'] = os.getenv('KEY')
 GoogleMaps(app)
 key = os.getenv('KEY')
+print(key)
 
 @app.route("/")
 def home():
