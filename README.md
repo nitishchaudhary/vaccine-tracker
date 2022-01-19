@@ -8,3 +8,5 @@ You can enter your area pincode to get the name and address of availble vaccinat
 
 Uses the api-setu for fetching the vaccine slots details. Also integrated google maps to show the vaccine locations on the map.(Currently not working as google maps require 
 paid account to enable these features)
+
+The app is containerized using docker and the image is pushed to docker hub.(nitishchaudhary/vaccinetracker)
