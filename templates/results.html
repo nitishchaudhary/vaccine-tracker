@@ -18,12 +18,13 @@
         height: 100%;
         margin: 0;
         padding: 0;
+        overflow-y: hidden;
       }
       .results{
         width: 60%;
         margin: 0 auto;
         text-align: center;
-        margin-top: 10px;
+        margin-top: 100px;
         border: 1px solid grey;
         padding-bottom: 10px;
         
@@ -34,6 +35,7 @@
       }
       button{
         border-radius: 18px;
+        border: solid 1px grey;
         padding: 5px;
         width: 200px;
         transition-duration: 0.4s;
@@ -47,7 +49,7 @@
   </head>
   <body>
     <div class="main-container">
-      <div id="map"></div>
+      <!-- <div id="map"></div> -->
       <div class="results ">
         <h1 class = "display-6">Following sessions are available for vaccination</h1><br>
         {%for value in data['sessions'] %}
