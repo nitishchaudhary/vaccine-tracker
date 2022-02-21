@@ -1,1 +1,1 @@
-web:gunicorn wsgi:Vaccine_Tracker
+web:gunicorn wsgi:app
